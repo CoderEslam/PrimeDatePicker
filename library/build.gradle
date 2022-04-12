@@ -1,0 +1,36 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+}
+
+apply from: rootProject.file('scripts/android.gradle')
+apply from: rootProject.file('scripts/kotlin.gradle')
+
+android {
+//    resourcePrefix 'pdp_'
+
+    defaultConfig {
+        vectorDrawables.useSupportLibrary = true
+    }
+}
+
+dependencies {
+    implementation dep.primecalendar
+    implementation dep.androidx.lifecycleKtx
+    implementation dep.bundles.coroutines
+    implementation dep.bundles.ui
+
+    testImplementation dep.junit.core
+    androidTestImplementation dep.bundles.androidTest
+}
+
+ext.publishInfo = [
+        groupId    : 'com.aminography',
+        artifactId : 'primedatepicker',
+        version    : libVersion.name,
+        description: 'PrimeDatePicker is a wonderful date picker tool.',
+        githubRepo : 'PrimeDatePicker' /* https://github.com/aminography/# */
+]
+
+apply from: rootProject.file('scripts/publish-module.gradle')

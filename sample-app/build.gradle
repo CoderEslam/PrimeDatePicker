@@ -1,0 +1,25 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
+}
+
+apply from: rootProject.file('scripts/android.gradle')
+apply from: rootProject.file('scripts/kotlin.gradle')
+
+android {
+    defaultConfig {
+        applicationId "com.aminography.primedatepicker.sample"
+        vectorDrawables.useSupportLibrary = true
+    }
+}
+
+dependencies {
+    implementation project(':library')
+
+    implementation dep.primecalendar
+    implementation dep.bundles.ui
+
+    testImplementation dep.junit.core
+    androidTestImplementation dep.bundles.androidTest
+}

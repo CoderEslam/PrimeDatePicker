@@ -1,0 +1,27 @@
+apply plugin: 'io.github.gradle-nexus.publish-plugin'
+apply from: rootProject.file('scripts/publish-root.gradle')
+
+buildscript {
+    apply from: rootProject.file('scripts/versions.gradle')
+
+    ext.primecalendar_version = '1.4.0'
+
+    ext.lifecycle_version = '2.2.0'
+
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+
+    dependencies {
+        classpath plugin.android.gradle
+        classpath plugin.jetbrains.kotlin
+        classpath plugin.jetbrains.dokka
+        classpath plugin.nexus.publish
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

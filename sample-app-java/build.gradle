@@ -1,0 +1,22 @@
+plugins {
+    id 'com.android.application'
+}
+
+apply from: rootProject.file('scripts/android.gradle')
+
+android {
+    defaultConfig {
+        applicationId "com.aminography.primedatepicker.sample_java"
+        vectorDrawables.useSupportLibrary = true
+    }
+}
+
+dependencies {
+    implementation project(':library')
+
+    implementation dep.primecalendar
+    implementation dep.bundles.ui
+
+    testImplementation dep.junit.core
+    androidTestImplementation dep.bundles.androidTest
+}
